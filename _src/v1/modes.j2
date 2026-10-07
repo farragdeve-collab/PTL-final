@@ -8,7 +8,7 @@
   <div class="mode-row" data-reveal>
     {% for m in modes %}
     <article class="mode {{ 'is-open' if loop.first }}" tabindex="0">
-      <img src="assets/{{ m.img }}.jpg" alt="" loading="lazy">
+      <img src="assets/{{ m.img }}.webp" alt="" loading="lazy">
       <div class="mode-body">
         <span class="mode-icon">{{ icon({"land":"truck","sea":"ship","air":"plane","post":"parcel"}[m.k]) }}</span>
         <h3 data-i18n="mode.{{ m.k }}"></h3>

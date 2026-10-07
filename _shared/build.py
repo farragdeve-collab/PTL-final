@@ -113,14 +113,14 @@ def build(only=None):
         for page in PAGES:
             markup = env.get_template(f"{page}.j2").render(page=page)
             markup = prefill(markup)
-            used.update(re.findall(r'assets/([\w.-]+\.(?:jpg|png))', markup.replace('srcset="', 'src="')))
+            used.update(re.findall(r'assets/([\w.-]+\.(?:jpg|png|webp))', markup.replace('srcset="', 'src="')))
             (out / f"{page}.html").write_text(markup, encoding="utf-8")
         for f in ["content.js", "core.js"]:
             shutil.copy(SHARED / f, out / f)
         for f in src.iterdir():
             if f.suffix in (".css", ".js"):
                 shutil.copy(f, out / f.name)
-                used.update(re.findall(r'assets/([\w.-]+\.(?:jpg|png))', f.read_text(encoding="utf-8")))
+                used.update(re.findall(r'assets/([\w.-]+\.(?:jpg|png|webp))', f.read_text(encoding="utf-8")))
         for name in sorted(used):
             shutil.copy(ASSETS / name, out / "assets" / name)
         print(f"{v['out']}: {len(PAGES)} pages, {len(used)} assets")
