@@ -145,7 +145,7 @@ body.menu-open .mobile-menu { clip-path: inset(0 0 0 0); visibility: visible; tr
 .pl-count span { background: var(--chrome); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pl-bar { width: min(240px, 60vw); height: 1px; background: var(--line); overflow: hidden; }
 .pl-bar i { display: block; height: 100%; width: 100%; background: var(--sky); transform: scaleX(0); transform-origin: left; }
-html:not(.js) .preloader { display: none; }
+html:not(.js) .preloader, .intro-seen .preloader { display: none; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }

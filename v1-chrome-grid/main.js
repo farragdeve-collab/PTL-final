@@ -47,17 +47,22 @@
   }
 
   var preloader = document.querySelector(".preloader");
+  // the intro plays once per visit; returning to the home page opens straight on the hero
+  var introSeen = document.documentElement.classList.contains("intro-seen");
+  try { sessionStorage.setItem("ptl-intro", "1"); } catch (e) {}
+  if (preloader && introSeen) { preloader.remove(); preloader = null; }
   if (preloader) {
     if (PTL.lenis) PTL.lenis.stop();
     var count = preloader.querySelector(".pl-count span");
     var bar = preloader.querySelector(".pl-bar i");
     var state = { v: 0 };
     var ready = Promise.race([
+      // wait only for what the first screen needs: fonts and the hero photo
       Promise.all([
         document.fonts ? document.fonts.ready : Promise.resolve(),
-        new Promise(function (res) { if (document.readyState === "complete") res(); else window.addEventListener("load", res); })
+        (function () { var img = document.querySelector(".hero-media img"); return img && img.decode ? img.decode().catch(function () {}) : Promise.resolve(); })()
       ]),
-      new Promise(function (res) { setTimeout(res, 4500); })
+      new Promise(function (res) { setTimeout(res, 2500); })
     ]);
     var climb = gsap.to(state, {
       v: 86, duration: 1.4, ease: "power2.out",
