@@ -11,8 +11,14 @@ function webglOK() {
   try { const c = document.createElement("canvas"); return !!(c.getContext("webgl2") || c.getContext("webgl")); } catch (e) { return false; }
 }
 
-if (stage && canvas && webglOK()) init();
-else document.documentElement.classList.add("no-webgl");
+// Build the scene after first paint (idle after load) or on the first scroll, so the hero and intro stay smooth.
+if (stage && canvas && webglOK()) {
+  let started = false;
+  const start = () => { if (started) return; started = true; init(); };
+  const kick = () => ("requestIdleCallback" in window ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 200));
+  if (document.readyState === "complete") kick(); else window.addEventListener("load", kick, { once: true });
+  window.addEventListener("scroll", start, { once: true, passive: true });
+} else document.documentElement.classList.add("no-webgl");
 
 function init() {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
