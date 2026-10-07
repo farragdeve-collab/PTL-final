@@ -551,3 +551,10 @@ h1, h2, h3, p, blockquote, figcaption, .cd-item a { overflow-wrap: break-word; }
   .hs-icon { width: 40px; height: 40px; }
 }
 .brand { display: flex; align-items: center; min-height: 44px; }
+
+/* touch screens: comfortable tap targets for contact links and language buttons */
+@media (pointer: coarse) {
+  .cd-item a { display: flex; align-items: center; width: fit-content; min-height: 44px; }
+  .cd-link { min-height: 44px; }
+  .lang-switch button { min-height: 40px; min-width: 40px; }
+}

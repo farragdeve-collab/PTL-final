@@ -404,3 +404,10 @@ h1, h2, h3, p, blockquote, figcaption, .cd-item a { overflow-wrap: break-word; }
 .form-grid input, .form-grid select, .form-grid textarea { min-width: 0; max-width: 100%; }
 .cd-item a, .footer-col a { overflow-wrap: anywhere; }
 .brand { display: flex; align-items: center; min-height: 44px; }
+
+/* touch screens: comfortable tap targets for contact links and language buttons */
+@media (pointer: coarse) {
+  .cd-item a { display: flex; align-items: center; width: fit-content; min-height: 44px; }
+  .cd-link { min-height: 44px; }
+  .lang-switch button { min-height: 40px; min-width: 40px; }
+}
