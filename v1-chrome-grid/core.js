@@ -89,11 +89,22 @@
     if (!el || el.dataset.split) return el.querySelectorAll(".w > span");
     var text = el.textContent.trim();
     el.textContent = "";
+    // Keep CJK line-breaking rules: closing punctuation stays with the character before it,
+    // opening punctuation with the one after, and Latin words/numbers stay whole.
+    var CLOSE = "。，、．！？；：」』）》〉】〕”’…%", OPEN = "「『（《〈【〔“‘";
+    var tokens = [];
     Array.from(text).forEach(function (ch) {
+      var last = tokens[tokens.length - 1];
+      if (last !== undefined && (CLOSE.indexOf(ch) >= 0 || OPEN.indexOf(last.slice(-1)) >= 0 ||
+          (/[A-Za-z0-9.\-]/.test(ch) && /[A-Za-z0-9.\-]$/.test(last)))) tokens[tokens.length - 1] = last + ch;
+      else tokens.push(ch);
+    });
+    tokens.forEach(function (tok) {
+      if (/^\s+$/.test(tok)) { el.appendChild(document.createTextNode(" ")); return; }
       var w = document.createElement("span");
       w.className = "w" + (cls ? " " + cls : "");
       var inner = document.createElement("span");
-      inner.textContent = ch;
+      inner.textContent = tok;
       w.appendChild(inner);
       el.appendChild(w);
     });
