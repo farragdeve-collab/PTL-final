@@ -23,26 +23,26 @@
 <div class="contact-details">
   <div class="cd-item">
     <span class="cd-icon">{{ icon("pin") }}</span>
-    <div><h3 data-i18n="contact.address.l"></h3><p data-i18n="contact.address"></p>
+    <div><h2 data-i18n="contact.address.l"></h2><p data-i18n="contact.address"></p>
       <a class="cd-link" href="{{ contact.map }}" target="_blank" rel="noopener"><span data-i18n="contact.map"></span> {{ icon("arrow", "icon icon-dir") }}</a></div>
   </div>
   <div class="cd-item">
     <span class="cd-icon">{{ icon("clock") }}</span>
-    <div><h3 data-i18n="contact.hours.l"></h3><p data-i18n="contact.hours"></p>{{ open_status() }}</div>
+    <div><h2 data-i18n="contact.hours.l"></h2><p data-i18n="contact.hours"></p>{{ open_status() }}</div>
   </div>
   <div class="cd-item">
     <span class="cd-icon">{{ icon("phone") }}</span>
-    <div><h3 data-i18n="contact.phone.l"></h3>
+    <div><h2 data-i18n="contact.phone.l"></h2>
       {% for p in contact.phones %}<a href="tel:{{ p.tel }}" dir="ltr">{{ p.label }}</a>{% endfor %}</div>
   </div>
   <div class="cd-item">
     <span class="cd-icon">{{ icon("mail") }}</span>
-    <div><h3 data-i18n="contact.email.l"></h3>
+    <div><h2 data-i18n="contact.email.l"></h2>
       {% for e in contact.emails %}<a href="mailto:{{ e }}" dir="ltr">{{ e }}</a>{% endfor %}</div>
   </div>
   <div class="cd-item">
     <span class="cd-icon">{{ icon("whatsapp") }}</span>
-    <div><h3 data-i18n="contact.wa.l"></h3>
+    <div><h2 data-i18n="contact.wa.l"></h2>
       <a data-wa-link href="https://wa.me/{{ contact.whatsapp }}" target="_blank" rel="noopener" dir="ltr">+{{ contact.whatsapp }}</a></div>
   </div>
 </div>

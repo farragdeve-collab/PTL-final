@@ -393,8 +393,8 @@ html:lang(ar) .kw-word { letter-spacing: 0; line-height: 1.35; }
 .contact-details { display: grid; gap: 0; border-top: 1px solid var(--line); }
 .cd-item { display: grid; grid-template-columns: 52px 1fr; gap: 18px; padding: 26px 0; border-bottom: 1px solid var(--line); }
 .cd-icon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: rgba(62,162,255,.1); color: var(--sky); }
-.cd-item h3 { margin: 0 0 6px; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-html:lang(ar) .cd-item h3 { letter-spacing: 0; font-size: .9rem; }
+.cd-item h2 { margin: 0 0 6px; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+html:lang(ar) .cd-item h2 { letter-spacing: 0; font-size: .9rem; }
 .cd-item p { margin: 0 0 8px; }
 .cd-item a { display: block; width: fit-content; font-size: 1.08rem; transition: color .3s; }
 .cd-item a:hover { color: var(--sky); }

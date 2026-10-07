@@ -267,8 +267,8 @@ html:lang(ar) .big-text { line-height: 1.7; letter-spacing: 0; }
 .cd-item { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
 .cd-item:last-child { border-bottom: 0; }
 .cd-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: rgba(58,168,255,.12); color: var(--cyan); }
-.cd-item h3 { margin: 0 0 4px; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-html:lang(ar) .cd-item h3 { letter-spacing: 0; font-size: .9rem; }
+.cd-item h2 { margin: 0 0 4px; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+html:lang(ar) .cd-item h2 { letter-spacing: 0; font-size: .9rem; }
 .cd-item p { margin: 0 0 8px; }
 .cd-item a { display: block; width: fit-content; font-size: 1.05rem; transition: color .3s; }
 .cd-item a:hover { color: var(--cyan); }
