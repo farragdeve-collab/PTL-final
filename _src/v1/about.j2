@@ -1,0 +1,82 @@
+{% extends "base.j2" %}
+{% from "icons.j2" import icon %}
+{% from "blocks.j2" import faq_list, open_status %}
+{% block fonts %}{% include "fonts.j2" %}{% endblock %}
+
+{% block main %}
+<section class="page-hero">
+  <div class="page-hero-media"><img src="assets/containers-aerial.jpg" alt="" data-parallax="10"></div>
+  <div class="hero-shade"></div>
+  <div class="page-hero-inner">
+    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="about.kicker"></span></p>
+    <h1 class="h1" data-reveal-words data-i18n="about.title"></h1>
+    <p class="lead" data-reveal data-i18n="about.lead"></p>
+  </div>
+</section>
+
+<section class="intro section">
+  <p class="intro-text" data-scrub-words data-i18n="about.text"></p>
+  <div class="stats">
+    {% for i in range(1, 5) %}
+    <div class="stat" data-reveal data-delay="{{ loop.index0 * 0.08 }}">
+      <b class="chrome" data-count data-i18n="s{{ i }}.n"></b>
+      <span data-i18n="s{{ i }}.l"></span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="values section">
+  <div class="section-head">
+    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="values.kicker"></span></p>
+    <h2 class="h2" data-reveal-words data-i18n="values.title"></h2>
+  </div>
+  <div class="stack">
+    {% for v in values %}
+    <article class="stack-card" style="--n: {{ loop.index0 }}">
+      <img src="assets/{{ v.img }}.jpg" alt="" loading="lazy">
+      <div class="stack-body">
+        <span class="stack-num chrome">{{ "%02d"|format(loop.index) }}</span>
+        <h3 data-i18n="{{ v.k }}.t"></h3>
+        <p data-i18n="{{ v.k }}.d"></p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="network section" id="network">
+  <div class="network-head">
+    <div>
+      <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="network.kicker"></span></p>
+      <h2 class="h2" data-reveal-words data-i18n="network.title"></h2>
+    </div>
+    <div data-reveal>
+      <p class="muted" data-i18n="network.text"></p>
+      <p class="hub">{{ icon("pin") }}<span data-i18n="network.hub"></span></p>
+    </div>
+  </div>
+  <div class="regions">
+    {% for r in regions %}
+    <div class="region" data-reveal>
+      <span class="region-n">{{ "%02d"|format(loop.index) }}</span>
+      <h3 data-i18n="reg.{{ r.k }}.t"></h3>
+      <p data-i18n="reg.{{ r.k }}.c"></p>
+      <span class="region-arrow">{{ icon("arrow", "icon icon-dir") }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="faq-section section" id="faq">
+  <div class="faq-layout">
+    <div class="section-head sticky-head">
+      <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="faq.kicker"></span></p>
+      <h2 class="h2" data-reveal-words data-i18n="faq.title"></h2>
+    </div>
+    {{ faq_list() }}
+  </div>
+</section>
+
+{% include "cta.j2" %}
+{% endblock %}

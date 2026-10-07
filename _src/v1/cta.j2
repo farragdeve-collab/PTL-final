@@ -1,0 +1,17 @@
+{% from "icons.j2" import icon %}
+{% from "blocks.j2" import open_status %}
+<!-- CTA -->
+<section class="cta section">
+  <div class="cta-card">
+    <img class="cta-photo" src="assets/cranes-sunset.jpg" alt="" loading="lazy">
+    <div class="cta-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="cta.kicker"></span></p>
+    <h2 class="h1" data-reveal-words data-i18n="cta.title"></h2>
+    <p class="muted" data-reveal data-i18n="cta.text"></p>
+    <div class="hero-actions" data-reveal>
+      <a class="btn btn-primary" href="contact.html"><span data-i18n="cta.btn"></span>{{ icon("arrow", "icon icon-dir") }}</a>
+      <a class="btn btn-ghost" data-wa-link href="https://wa.me/{{ contact.whatsapp }}" target="_blank" rel="noopener">{{ icon("whatsapp") }}<span data-i18n="cta.wa"></span></a>
+    </div>
+    <div data-reveal>{{ open_status() }}</div>
+  </div>
+</section>

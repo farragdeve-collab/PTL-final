@@ -1,0 +1,19 @@
+{% extends "base.j2" %}
+{% from "blocks.j2" import contact_details, contact_form, map_embed %}
+{% block fonts %}{% include "fonts.j2" %}{% endblock %}
+
+{% block main %}
+<section class="page-head wrap">
+  <p class="eyebrow" data-reveal><span data-i18n="contact.kicker"></span></p>
+  <h1 class="mega" data-reveal-words data-i18n="contact.title"></h1>
+  <p class="page-lead" data-reveal data-i18n="contact.lead"></p>
+</section>
+
+<section class="contact wrap">
+  <div class="contact-layout">
+    <div class="paper-card" data-reveal>{{ contact_form() }}</div>
+    <div data-reveal data-delay="0.1">{{ contact_details() }}</div>
+  </div>
+  <div data-reveal>{{ map_embed() }}</div>
+</section>
+{% endblock %}

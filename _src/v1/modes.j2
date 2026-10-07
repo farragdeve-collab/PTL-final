@@ -1,0 +1,23 @@
+{% from "icons.j2" import icon %}
+<!-- SHIPPING MODES + CARGO -->
+<section class="modes section">
+  <div class="section-head">
+    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="modes.kicker"></span></p>
+    <h2 class="h2" data-reveal-words data-i18n="cargo.title"></h2>
+  </div>
+  <div class="mode-row" data-reveal>
+    {% for m in modes %}
+    <article class="mode {{ 'is-open' if loop.first }}" tabindex="0">
+      <img src="assets/{{ m.img }}.jpg" alt="" loading="lazy">
+      <div class="mode-body">
+        <span class="mode-icon">{{ icon({"land":"truck","sea":"ship","air":"plane","post":"parcel"}[m.k]) }}</span>
+        <h3 data-i18n="mode.{{ m.k }}"></h3>
+        <p data-i18n="mode.{{ m.k }}.d"></p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <div class="cargo-tags" data-reveal>
+    {% for c in cargo %}<span data-i18n="{{ c }}"></span>{% endfor %}
+  </div>
+</section>

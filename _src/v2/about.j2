@@ -1,0 +1,96 @@
+{% extends "base.j2" %}
+{% from "icons.j2" import icon %}
+{% from "blocks.j2" import faq_list, open_status %}
+{% block fonts %}{% include "fonts.j2" %}{% endblock %}
+
+{% block main %}
+<section class="page-head wrap">
+  <p class="eyebrow" data-reveal><span data-i18n="about.kicker"></span></p>
+  <h1 class="mega" data-reveal-words data-i18n="about.title"></h1>
+  <p class="page-lead" data-reveal data-i18n="about.lead"></p>
+</section>
+
+<div class="page-photo wrap" data-reveal>
+  <div class="page-photo-inner"><img src="assets/containers-aerial.jpg" alt="" data-parallax="10"></div>
+</div>
+
+<section class="intro wrap">
+  <div class="intro-grid">
+    <p class="eyebrow" data-reveal><span data-i18n="intro.kicker"></span></p>
+    <p class="intro-text" data-scrub-words data-i18n="about.text"></p>
+  </div>
+  <div class="stats">
+    {% for i in range(1, 5) %}
+    <div class="stat" data-reveal data-delay="{{ loop.index0 * 0.08 }}">
+      <b data-count data-i18n="s{{ i }}.n"></b>
+      <span data-i18n="s{{ i }}.l"></span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="values">
+  <div class="wrap sec-head">
+    <p class="eyebrow" data-reveal><span data-i18n="values.kicker"></span></p>
+    <h2 class="display light" data-reveal-words data-i18n="values.title"></h2>
+  </div>
+  <div class="wrap value-grid">
+    {% for v in values %}
+    <article class="value">
+      <div class="value-media"><img src="assets/{{ v.img }}.jpg" alt="" loading="lazy" data-parallax="8"></div>
+      <span class="value-n">{{ "%02d"|format(loop.index) }}</span>
+      <h3 data-reveal data-i18n="{{ v.k }}.t"></h3>
+      <p data-reveal data-i18n="{{ v.k }}.d"></p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="network wrap" id="network">
+  <div class="sec-head split">
+    <div>
+      <p class="eyebrow" data-reveal><span data-i18n="network.kicker"></span></p>
+      <h2 class="display" data-reveal-words data-i18n="network.title"></h2>
+    </div>
+    <div data-reveal>
+      <p class="note" data-i18n="network.text"></p>
+      <p class="hub">{{ icon("pin") }}<span data-i18n="network.hub"></span></p>
+    </div>
+  </div>
+  <div class="board">
+    {% for r in regions %}
+    <div class="board-row" data-reveal>
+      <span class="board-n">{{ "%02d"|format(loop.index) }}</span>
+      <h3 data-i18n="reg.{{ r.k }}.t"></h3>
+      <p data-i18n="reg.{{ r.k }}.c"></p>
+      <span class="board-count">{% if r.n %}{{ r.n }}{% else %}—{% endif %}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="faq-section wrap" id="faq">
+  <div class="faq-layout">
+    <div class="sec-head sticky-head">
+      <p class="eyebrow" data-reveal><span data-i18n="faq.kicker"></span></p>
+      <h2 class="display" data-reveal-words data-i18n="faq.title"></h2>
+    </div>
+    {{ faq_list() }}
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-inner">
+    <p class="eyebrow light" data-reveal><span data-i18n="cta.kicker"></span></p>
+    <h2 class="mega" data-reveal-words data-i18n="cta.title"></h2>
+    <div class="cta-row" data-reveal>
+      <p data-i18n="cta.text"></p>
+      <div class="actions">
+        <a class="btn btn-paper" href="contact.html"><span data-i18n="cta.btn"></span>{{ icon("arrow", "icon icon-dir") }}</a>
+        <a class="btn btn-line light" data-wa-link href="https://wa.me/{{ contact.whatsapp }}" target="_blank" rel="noopener">{{ icon("whatsapp") }}<span data-i18n="cta.wa"></span></a>
+      </div>
+      {{ open_status() }}
+    </div>
+  </div>
+</section>
+{% endblock %}

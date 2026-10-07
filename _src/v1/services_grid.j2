@@ -1,0 +1,21 @@
+{% from "icons.j2" import icon %}
+<!-- SERVICES GRID (option B) -->
+<section class="services-grid section" id="services">
+  <div class="section-head">
+    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="services.kicker"></span></p>
+    <h2 class="h2" data-reveal-words data-i18n="services.title"></h2>
+  </div>
+  <div class="bento">
+    {% for s in services %}
+    <article class="bento-card b{{ loop.index }}" data-reveal data-delay="{{ (loop.index0 % 3) * 0.08 }}">
+      <img src="assets/{{ s.img }}.jpg" alt="" loading="lazy">
+      <span class="bento-n chrome">{{ "%02d"|format(loop.index) }}</span>
+      <div class="bento-body">
+        <span class="bento-icon">{{ icon(s.icon) }}</span>
+        <h3 data-i18n="{{ s.k }}.t"></h3>
+        <p data-i18n="{{ s.k }}.d"></p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

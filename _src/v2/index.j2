@@ -1,0 +1,221 @@
+{% extends "base.j2" %}
+{% from "icons.j2" import icon %}
+{% from "blocks.j2" import open_status, hero_stats, scroll_btn %}
+{% block fonts %}{% include "fonts.j2" %}{% endblock %}
+{% block head %}<link rel="preload" as="image" href="assets/pink-horizon.jpg">{% endblock %}
+
+{% block preloader %}
+<div class="curtain" aria-hidden="true"><img src="assets/logo-color.png" alt=""></div>
+{% endblock %}
+
+{% block main %}
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-card">
+    <img class="hero-bg" src="assets/pink-horizon.jpg" alt="">
+    <div class="hero-veil"></div>
+    <div class="hero-content">
+      <p class="eyebrow light hero-eyebrow"><span data-i18n="hero.kicker"></span></p>
+      <h1 class="hero-title">
+        <span class="line"><span data-i18n="hero.l1"></span></span>
+        <span class="line"><span data-i18n="hero.l2"></span></span>
+        <span class="line accent"><em data-i18n="hero.l3"></em></span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero.sub"></p>
+      <div class="actions hero-actions">
+        <a class="btn btn-paper" href="contact.html"><span data-i18n="hero.cta1"></span>{{ icon("arrow", "icon icon-dir") }}</a>
+        <a class="btn btn-line light" href="#services"><span data-i18n="hero.cta2"></span>{{ icon("arrow", "icon icon-dir") }}</a>
+      </div>
+    </div>
+    <div class="hero-bar">
+      {{ hero_stats(3) }}
+      {{ scroll_btn("#services") }}
+    </div>
+  </div>
+</section>
+
+<!-- EXPANDING WINDOW -->
+<section class="window">
+  <div class="window-stage">
+    <div class="window-frame">
+      <img src="assets/port-ship.jpg" alt="" class="window-img">
+      <div class="window-shade"></div>
+      <div class="window-copy">
+        <p class="eyebrow light"><span data-i18n="journey.kicker"></span></p>
+        <h2 class="display light" data-i18n="journey.title"></h2>
+      </div>
+    </div>
+    <div class="window-meta">
+      {% for m in modes %}<span><b>{{ "%02d"|format(loop.index) }}</b><i data-i18n="mode.{{ m.k }}"></i></span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- MODES BAND -->
+<div class="band" dir="ltr" aria-hidden="true">
+  <div class="band-track">
+    {% for _ in range(4) %}{% for m in modes %}<span data-i18n="mode.{{ m.k }}"></span><b>✦</b>{% endfor %}{% endfor %}
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro wrap">
+  <div class="intro-grid">
+    <p class="eyebrow" data-reveal><span data-i18n="intro.kicker"></span></p>
+    <p class="intro-text" data-scrub-words data-i18n="intro.text"></p>
+  </div>
+  <div class="stats">
+    {% for i in range(1, 5) %}
+    <div class="stat" data-reveal data-delay="{{ loop.index0 * 0.08 }}">
+      <b data-count data-i18n="s{{ i }}.n"></b>
+      <span data-i18n="s{{ i }}.l"></span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services wrap" id="services">
+  <div class="sec-head">
+    <p class="eyebrow" data-reveal><span data-i18n="services.kicker"></span></p>
+    <h2 class="display" data-reveal-words data-i18n="services.title"></h2>
+  </div>
+  <ol class="svc-list">
+    {% for s in services %}
+    <li class="svc" data-img="assets/{{ s.img }}.jpg" data-reveal>
+      <span class="svc-n">{{ "%02d"|format(loop.index) }}</span>
+      <h3 data-i18n="{{ s.k }}.t"></h3>
+      <p data-i18n="{{ s.k }}.d"></p>
+      <img class="svc-thumb" src="assets/{{ s.img }}.jpg" alt="" loading="lazy">
+      <span class="svc-arrow">{{ icon("arrow", "icon icon-dir") }}</span>
+    </li>
+    {% endfor %}
+  </ol>
+  <div class="cursor-preview" aria-hidden="true"><img alt=""></div>
+</section>
+
+<!-- JOURNEY (horizontal) -->
+<section class="journey" id="journey">
+  <div class="journey-stage">
+    <div class="journey-head wrap">
+      <p class="eyebrow"><span data-i18n="journey.kicker"></span></p>
+      <div class="journey-line"><i></i>{% for j in journey %}<b style="--k: {{ loop.index0 }}"></b>{% endfor %}</div>
+    </div>
+    <div class="journey-track">
+      {% for j in journey %}
+      <article class="jcard">
+        <div class="jcard-media"><img src="assets/{{ j.img }}.jpg" alt="" loading="lazy"></div>
+        <div class="jcard-body">
+          <span class="jcard-n">{{ "%02d"|format(loop.index) }} / 06</span>
+          <h3 data-i18n="{{ j.k }}.t"></h3>
+          <p data-i18n="{{ j.k }}.d"></p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process wrap" id="process">
+  <div class="sec-head split">
+    <div>
+      <p class="eyebrow" data-reveal><span data-i18n="process.kicker"></span></p>
+      <h2 class="display" data-reveal-words data-i18n="process.title"></h2>
+    </div>
+    <p class="note" data-reveal data-i18n="process.note"></p>
+  </div>
+  <div class="steps">
+    {% for p in process %}
+    <div class="step" data-reveal data-delay="{{ (loop.index0 % 3) * 0.08 }}">
+      <span class="step-n">{{ "%02d"|format(loop.index) }}</span>
+      <h3 data-i18n="{{ p }}.t"></h3>
+      <p data-i18n="{{ p }}.d"></p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap sec-head">
+    <p class="eyebrow" data-reveal><span data-i18n="values.kicker"></span></p>
+    <h2 class="display light" data-reveal-words data-i18n="values.title"></h2>
+  </div>
+  <div class="wrap value-grid">
+    {% for v in values %}
+    <article class="value">
+      <div class="value-media"><img src="assets/{{ v.img }}.jpg" alt="" loading="lazy" data-parallax="8"></div>
+      <span class="value-n">{{ "%02d"|format(loop.index) }}</span>
+      <h3 data-reveal data-i18n="{{ v.k }}.t"></h3>
+      <p data-reveal data-i18n="{{ v.k }}.d"></p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CARGO -->
+<section class="cargo wrap">
+  <p class="eyebrow" data-reveal><span data-i18n="cargo.kicker"></span></p>
+  <h2 class="display" data-reveal-words data-i18n="cargo.title"></h2>
+  <p class="cargo-cloud" data-reveal>
+    {% for c in cargo %}<span data-i18n="{{ c }}"></span>{% if not loop.last %} <i>/</i> {% endif %}{% endfor %}
+  </p>
+</section>
+
+<!-- NETWORK -->
+<section class="network wrap" id="network">
+  <div class="sec-head split">
+    <div>
+      <p class="eyebrow" data-reveal><span data-i18n="network.kicker"></span></p>
+      <h2 class="display" data-reveal-words data-i18n="network.title"></h2>
+    </div>
+    <div data-reveal>
+      <p class="note" data-i18n="network.text"></p>
+      <p class="hub">{{ icon("pin") }}<span data-i18n="network.hub"></span></p>
+    </div>
+  </div>
+  <div class="board">
+    {% for r in regions %}
+    <div class="board-row" data-reveal>
+      <span class="board-n">{{ "%02d"|format(loop.index) }}</span>
+      <h3 data-i18n="reg.{{ r.k }}.t"></h3>
+      <p data-i18n="reg.{{ r.k }}.c"></p>
+      <span class="board-count">{% if r.n %}{{ r.n }}{% else %}—{% endif %}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews wrap">
+  <p class="eyebrow" data-reveal><span data-i18n="reviews.kicker"></span></p>
+  <div class="quotes" data-quotes>
+    {% for r in reviews %}
+    <figure class="quote {{ 'is-active' if loop.first }}">
+      <blockquote data-i18n="{{ r }}.q"></blockquote>
+      <figcaption><b data-i18n="{{ r }}.n"></b> — <span data-i18n="{{ r }}.r"></span></figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+  <div class="quote-nav">
+    {% for r in reviews %}<button type="button" aria-label="{{ loop.index }}" class="{{ 'is-active' if loop.first }}"><i></i></button>{% endfor %}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap cta-inner">
+    <p class="eyebrow light" data-reveal><span data-i18n="cta.kicker"></span></p>
+    <h2 class="mega" data-reveal-words data-i18n="cta.title"></h2>
+    <div class="cta-row" data-reveal>
+      <p data-i18n="cta.text"></p>
+      <div class="actions">
+        <a class="btn btn-paper" href="contact.html"><span data-i18n="cta.btn"></span>{{ icon("arrow", "icon icon-dir") }}</a>
+        <a class="btn btn-line light" data-wa-link href="https://wa.me/{{ contact.whatsapp }}" target="_blank" rel="noopener">{{ icon("whatsapp") }}<span data-i18n="cta.wa"></span></a>
+      </div>
+      {{ open_status() }}
+    </div>
+  </div>
+</section>
+{% endblock %}

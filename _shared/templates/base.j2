@@ -1,0 +1,107 @@
+{% from "icons.j2" import icon %}
+{% set pkey = "home" if page == "index" else page %}
+<!doctype html>
+<html lang="ar" dir="rtl" data-page="{{ pkey }}" data-version="{{ version.id }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ ar["meta." ~ pkey] }}</title>
+  <meta name="description" content="{{ ar['meta.desc'] }}">
+  <meta name="theme-color" content="{{ '#05080d' if version.theme == 'dark' else '#f4f1ea' }}">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {% block fonts %}{% endblock %}
+  <link rel="stylesheet" href="style.css">
+  {% block head %}{% endblock %}
+</head>
+<body class="page-{{ page }} {% block body_class %}{% endblock %}">
+  {% block preloader %}{% endblock %}
+
+  {% set logo = "assets/logo-light.png" if version.theme == "dark" else "assets/logo-color.png" %}
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="PTL — Professional Team Logistics">
+      <img src="{{ logo }}" alt="PTL — Professional Team Logistics" width="900" height="500">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" data-i18n="nav.home" {% if page == "index" %}aria-current="page"{% endif %}></a>
+      <a href="about.html" data-i18n="nav.about" {% if page == "about" %}aria-current="page"{% endif %}></a>
+      <a href="index.html#services" data-i18n="nav.services"></a>
+      <a href="index.html#network" data-i18n="nav.network"></a>
+      <a href="contact.html" data-i18n="nav.contact" {% if page == "contact" %}aria-current="page"{% endif %}></a>
+    </nav>
+    <div class="header-tools">
+      <div class="lang-switch" role="group" aria-label="Language">
+        {% for code, short, full in langs %}<button type="button" data-lang="{{ code }}" title="{{ full }}" lang="{{ code }}">{{ short }}</button>{% endfor %}
+      </div>
+      <a class="btn btn-quote" href="contact.html"><span data-i18n="nav.quote"></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" data-i18n-aria="nav.menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" aria-hidden="false">
+    <nav>
+      <a href="index.html" data-i18n="nav.home"></a>
+      <a href="about.html" data-i18n="nav.about"></a>
+      <a href="index.html#services" data-i18n="nav.services"></a>
+      <a href="index.html#network" data-i18n="nav.network"></a>
+      <a href="contact.html" data-i18n="nav.contact"></a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <div class="lang-switch lang-switch--full">
+        {% for code, short, full in langs %}<button type="button" data-lang="{{ code }}" lang="{{ code }}">{{ full }}</button>{% endfor %}
+      </div>
+      <a href="tel:{{ contact.phones[0].tel }}" dir="ltr">{{ contact.phones[0].label }}</a>
+    </div>
+  </div>
+
+  <main id="main">
+  {% block main %}{% endblock %}
+  </main>
+
+  {% block footer %}
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="{{ logo }}" alt="PTL — Professional Team Logistics" width="900" height="500" loading="lazy">
+        <p data-i18n="footer.about"></p>
+        <p class="footer-tag" data-i18n="brand.tag"></p>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.links"></h3>
+        <a href="index.html" data-i18n="nav.home"></a>
+        <a href="about.html" data-i18n="nav.about"></a>
+        <a href="index.html#services" data-i18n="nav.services"></a>
+        <a href="index.html#network" data-i18n="nav.network"></a>
+        <a href="contact.html" data-i18n="nav.contact"></a>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.contact"></h3>
+        {% for p in contact.phones %}<a href="tel:{{ p.tel }}" dir="ltr">{{ p.label }}</a>{% endfor %}
+        {% for e in contact.emails %}<a href="mailto:{{ e }}" dir="ltr">{{ e }}</a>{% endfor %}
+        <a data-wa-link href="https://wa.me/{{ contact.whatsapp }}" target="_blank" rel="noopener"><span data-i18n="contact.wa.l"></span></a>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="contact.address.l"></h3>
+        <p data-i18n="contact.address"></p>
+        <p data-i18n="contact.hours"></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.rights"></p>
+      <div class="lang-switch">
+        {% for code, short, full in langs %}<button type="button" data-lang="{{ code }}" lang="{{ code }}">{{ full }}</button>{% endfor %}
+      </div>
+      <a href="#" class="to-top"><span data-i18n="footer.top"></span> {{ icon("arrow-up") }}</a>
+    </div>
+  </footer>
+  {% endblock %}
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="content.js"></script>
+  <script src="core.js"></script>
+  {% block scripts %}<script src="main.js"></script>{% endblock %}
+</body>
+</html>
