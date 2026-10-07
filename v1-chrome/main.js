@@ -199,7 +199,7 @@
     var next = stack[i + 1];
     if (!next) return;
     gsap.to(card, {
-      scale: 0.92, filter: "brightness(0.45)", ease: "none",
+      scale: 0.92, filter: "brightness(0.62)", ease: "none",
       scrollTrigger: { trigger: next, start: "top bottom", end: "top 20%", scrub: true }
     });
   });

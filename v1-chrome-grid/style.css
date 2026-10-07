@@ -465,7 +465,7 @@ html:lang(ar) .footer-col h3 { letter-spacing: 0; font-size: .9rem; }
   .ring-head { flex-direction: column-reverse; gap: 10px; padding-top: 96px; }
   .ring-title { text-align: start; }
   .kinetic-head { flex-direction: column; top: 84px; gap: 8px; }
-  .kinetic-stage { justify-content: flex-end; padding-bottom: 15vh; }
+  .kinetic-stage { justify-content: center; padding-top: 170px; padding-bottom: 8vh; }
   .kinetic-note { bottom: 4vh; }
   .kinetic-head h2 { text-align: start; }
   .kw-word { font-size: 23vw; }
