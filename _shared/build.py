@@ -25,6 +25,7 @@ ASSETS = SHARED / "assets"
 VERSIONS = [
     {"id": "v1", "out": "v1-chrome", "name": "Chrome", "theme": "dark", "variant": "ring"},
     {"id": "v1", "out": "v1-chrome-grid", "name": "Chrome (B)", "theme": "dark", "variant": "grid"},
+    {"id": "v1", "out": "v4-final", "name": "Final", "theme": "dark", "variant": "grid", "final": True},
     {"id": "v2", "out": "v2-editorial", "name": "Editorial", "theme": "light"},
     {"id": "v3", "out": "v3-globe", "name": "Globe", "theme": "dark"},
 ]
@@ -112,7 +113,7 @@ def build(only=None):
         for page in PAGES:
             markup = env.get_template(f"{page}.j2").render(page=page)
             markup = prefill(markup)
-            used.update(re.findall(r'assets/([\w.-]+\.(?:jpg|png))', markup))
+            used.update(re.findall(r'assets/([\w.-]+\.(?:jpg|png))', markup.replace('srcset="', 'src="')))
             (out / f"{page}.html").write_text(markup, encoding="utf-8")
         for f in ["content.js", "core.js"]:
             shutil.copy(SHARED / f, out / f)

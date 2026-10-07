@@ -658,14 +658,15 @@ window.PTL_CONTENT = {
   }
 };
 
+/* Sample contact data — replace with the real numbers/emails before launch. */
 window.PTL_CONTACT = {
   phones: [
-    { label: "02 2875 9137", tel: "+20228759137" },
-    { label: "010 1766 7728", tel: "+201017667728" },
-    { label: "010 0097 6152", tel: "+201000976152" }
+    { label: "02 0000 0000", tel: "+20200000000" },
+    { label: "010 0000 0000", tel: "+201000000000" },
+    { label: "011 0000 0000", tel: "+201100000000" }
   ],
-  emails: ["ah.kamal@anywaylogistic.com", "sa.kamal@anywaylogistic.com"],
-  whatsapp: "201285285036",
+  emails: ["info@example.com", "sales@example.com"],
+  whatsapp: "201000000000",
   map: "https://www.google.com/maps?q=30.1664893,31.3698179&z=17",
   mapEmbed: "https://www.google.com/maps?q=30.1664893,31.3698179&z=15&output=embed"
 };

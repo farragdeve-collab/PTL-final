@@ -352,7 +352,7 @@ html:lang(ar) .kw-word { letter-spacing: 0; line-height: 1.35; }
 
 /* ---------- CTA card ---------- */
 .cta-card { position: relative; overflow: hidden; max-width: 87.5rem; margin: 0 auto; border-radius: 32px; padding: clamp(60px, 9vw, 130px) clamp(24px, 5vw, 80px); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; background: radial-gradient(90% 120% at 50% 120%, #0f4a86 0%, #0a1626 55%, var(--bg-2) 100%); border: 1px solid var(--line-2); }
-.cta-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .38; mix-blend-mode: luminosity; }
+.cta-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 62%; opacity: .38; mix-blend-mode: luminosity; }
 .cta-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(80% 90% at 50% 100%, rgba(15,74,134,.5), rgba(5,8,13,.86)); }
 .cta-card > *:not(.cta-orbit):not(.cta-photo) { position: relative; }
 .cta-card .h1 { max-width: 15ch; }

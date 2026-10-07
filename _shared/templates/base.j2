@@ -21,7 +21,14 @@
   {% set logo = "assets/logo-light.png" if version.theme == "dark" else "assets/logo-color.png" %}
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="PTL — Professional Team Logistics">
-      <img src="{{ logo }}" alt="PTL — Professional Team Logistics" width="900" height="500">
+      {% if version.final %}
+      <picture>
+        <source media="(max-width: 759px)" srcset="assets/logo2-{{ 'light' if version.theme == 'dark' else 'color' }}.png" width="800" height="247">
+        <img src="{{ logo }}" alt="PTL — Professional Team Logistics" width="1200" height="691">
+      </picture>
+      {% else %}
+      <img src="{{ logo }}" alt="PTL — Professional Team Logistics" width="1200" height="691">
+      {% endif %}
     </a>
     <nav class="nav" aria-label="Main">
       <a href="index.html" data-i18n="nav.home" {% if page == "index" %}aria-current="page"{% endif %}></a>
@@ -63,7 +70,7 @@
   <footer class="site-footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="{{ logo }}" alt="PTL — Professional Team Logistics" width="900" height="500" loading="lazy">
+        <img src="{{ logo }}" alt="PTL — Professional Team Logistics" width="1200" height="691" loading="lazy">
         <p data-i18n="footer.about"></p>
         <p class="footer-tag" data-i18n="brand.tag"></p>
       </div>
