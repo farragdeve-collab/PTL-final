@@ -136,7 +136,7 @@ window.PTL_CONTENT = {
     "contact.title": "لنبدأ شحنتك القادمة.",
     "contact.lead": "إذا كنت تريد الاستفسار عن خدمة أو طلبها، لا تتردد في التواصل معنا.",
     "contact.address.l": "عنوان المكتب",
-    "contact.address": "مبنى 3، طريق الدائري (الخدمة)، كوبري الزهور، مؤسسة الزكاة — القاهرة، مصر",
+    "contact.address": "مبنى 00، شارع المثال، حي تجريبي — القاهرة، مصر",
     "contact.hours.l": "ساعات العمل",
     "contact.hours": "السبت – الخميس، 9:00 ص – 8:00 م",
     "contact.phone.l": "الهاتف",
@@ -300,7 +300,7 @@ window.PTL_CONTENT = {
     "contact.title": "Let's move your next shipment.",
     "contact.lead": "Whether you want to ask about a service or book one, don't hesitate to contact us.",
     "contact.address.l": "Office",
-    "contact.address": "Building 3, Ring Road service road, El-Zohour Bridge, Moassasat El-Zakat — Cairo, Egypt",
+    "contact.address": "Building 00, Sample Street, Example District — Cairo, Egypt",
     "contact.hours.l": "Office hours",
     "contact.hours": "Saturday – Thursday, 9:00 AM – 8:00 PM",
     "contact.phone.l": "Phone",
@@ -464,7 +464,7 @@ window.PTL_CONTENT = {
     "contact.title": "Expédions votre prochain envoi.",
     "contact.lead": "Pour une question sur un service ou une réservation, n'hésitez pas à nous contacter.",
     "contact.address.l": "Bureau",
-    "contact.address": "Immeuble 3, route de service du périphérique, pont El-Zohour, Moassasat El-Zakat — Le Caire, Égypte",
+    "contact.address": "Immeuble 00, rue Exemple, quartier Exemple — Le Caire, Égypte",
     "contact.hours.l": "Horaires",
     "contact.hours": "Samedi – jeudi, 9 h 00 – 20 h 00",
     "contact.phone.l": "Téléphone",
@@ -628,7 +628,7 @@ window.PTL_CONTENT = {
     "contact.title": "让我们运送您的下一票货物。",
     "contact.lead": "无论是咨询还是预订服务，欢迎随时联系我们。",
     "contact.address.l": "办公地址",
-    "contact.address": "埃及开罗 Moassasat El-Zakat，El-Zohour 桥，环城公路辅路 3 号楼",
+    "contact.address": "埃及开罗 示例区 示例街 00 号楼",
     "contact.hours.l": "办公时间",
     "contact.hours": "周六至周四，上午 9:00 – 晚上 8:00",
     "contact.phone.l": "电话",
@@ -658,7 +658,7 @@ window.PTL_CONTENT = {
   }
 };
 
-/* Sample contact data — replace with the real numbers/emails before launch. */
+/* Sample contact data (phones, emails, WhatsApp, address, map) — replace with the real details before launch. */
 window.PTL_CONTACT = {
   phones: [
     { label: "02 0000 0000", tel: "+20200000000" },
@@ -667,6 +667,6 @@ window.PTL_CONTACT = {
   ],
   emails: ["info@example.com", "sales@example.com"],
   whatsapp: "201000000000",
-  map: "https://www.google.com/maps?q=30.1664893,31.3698179&z=17",
-  mapEmbed: "https://www.google.com/maps?q=30.1664893,31.3698179&z=15&output=embed"
+  map: "https://www.google.com/maps?q=Cairo,Egypt&z=11",
+  mapEmbed: "https://www.google.com/maps?q=Cairo,Egypt&z=11&output=embed"
 };

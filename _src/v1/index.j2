@@ -40,6 +40,9 @@
   </div>
 </section>
 
+{% if version.final %}
+{% include "geo_final.j2" %}
+{% else %}
 <!-- PTL 3D -->
 <section class="ptl-scene" id="ptl">
   <div class="ptl-stage">
@@ -60,6 +63,7 @@
     <div class="ptl-progress"><span class="cur">01</span><i><b></b></i><span>03</span></div>
   </div>
 </section>
+{% endif %}
 
 <!-- INTRO + STATS -->
 <section class="intro section">
@@ -108,6 +112,9 @@
 </section>
 {% endif %}
 
+{% if version.final %}
+{% include "route_final.j2" %}
+{% else %}
 <!-- KINETIC PROCESS -->
 <section class="kinetic" id="process">
   <div class="kinetic-stage">
@@ -127,6 +134,7 @@
     <p class="kinetic-note" data-i18n="process.note"></p>
   </div>
 </section>
+{% endif %}
 
 {% include "modes.j2" %}
 
@@ -150,6 +158,7 @@
   </div>
 </section>
 
+{% if not version.final %}
 <!-- NETWORK -->
 <section class="network section" id="network">
   <div class="network-head">
@@ -173,6 +182,7 @@
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
 <!-- REVIEWS -->
 <section class="reviews section">
@@ -196,6 +206,12 @@
 {% endblock %}
 
 {% block scripts %}
+{% if version.final %}
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="main.js"></script>
+<script type="module" src="globe.js"></script>
+{% else %}
 <script src="main.js"></script>
 <script type="module" src="ptl3d.js"></script>
+{% endif %}
 {% endblock %}

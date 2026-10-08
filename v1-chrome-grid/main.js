@@ -6,6 +6,7 @@
   var rtl = PTL.rtl;
   var dirSign = rtl ? 1 : -1;
   PTL.ptlProgress = 0;
+  PTL.geo = { p: 0, region: 0, inRegions: true }; // read by globe.js (final version)
 
   /* ---------- shipping-mode accordion (hover, focus or tap) ---------- */
   var modeCards = document.querySelectorAll(".mode");
@@ -30,6 +31,7 @@
     var pl = document.querySelector(".preloader");
     if (pl) pl.remove();
     document.querySelectorAll(".ptl-panel").forEach(function (p) { p.style.opacity = 1; p.style.visibility = "visible"; });
+    document.querySelectorAll(".station").forEach(function (s) { s.classList.add("on"); });
     return;
   }
 
@@ -196,6 +198,72 @@
       }
     });
     gsap.fromTo(".kinetic-head", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, scrollTrigger: { trigger: kin, start: "top 60%" } });
+  }
+
+  /* ---------- globe regions (final version): one region per scroll step ---------- */
+  var geo = document.querySelector(".geo");
+  if (geo) {
+    var gHead = geo.querySelector(".geo-head");
+    var gPanels = gsap.utils.toArray(".geo-panel");
+    var gDots = geo.querySelectorAll(".geo-dots i");
+    var gDotsWrap = geo.querySelector(".geo-dots");
+    var gStart = 0.04, gN = gPanels.length, gSpan = (1 - gStart) / gN;
+    var gMob = function () { return window.innerWidth <= 760 || window.innerWidth / window.innerHeight < 0.9; };
+    ScrollTrigger.create({
+      trigger: geo, start: "top top", end: "bottom bottom", scrub: true,
+      onUpdate: function (self) {
+        var p = self.progress;
+        var headA = gsap.utils.clamp(0, 1, p / gStart);
+        gHead.style.opacity = headA;
+        gDotsWrap.style.opacity = headA;
+        var region = Math.min(gN - 1, Math.max(0, Math.floor((p - gStart) / gSpan)));
+        gPanels.forEach(function (panel, i) {
+          var local = (p - (gStart + i * gSpan)) / gSpan;
+          var a = local < 0 ? 0 : local < 0.18 ? local / 0.18 : local < 0.82 ? 1 : local < 1 ? (1 - local) / 0.18 : 0;
+          if (i === gN - 1 && local >= 0.82) a = 1;
+          if (i === 0 && local < 0.18) a = gsap.utils.clamp(0, 1, local / 0.18);
+          panel.style.opacity = a;
+          panel.style.visibility = a > 0.01 ? "visible" : "hidden";
+          var low = gMob() || window.innerHeight < 560;
+          panel.style.transform = low ? "translateY(" + (1 - a) * 30 + "px)" : "translateY(" + (-30 - (1 - a) * 10) + "%)";
+        });
+        gDots.forEach(function (d, i) { d.classList.toggle("on", i === region); });
+        PTL.geo.p = p;
+        PTL.geo.region = region;
+      }
+    });
+  }
+
+  /* ---------- route path (final version): the truck drives the line as you scroll ---------- */
+  var map = document.querySelector(".route-map");
+  if (map && window.innerWidth > 760) {
+    var line = map.querySelector(".route-line");
+    var truck = map.querySelector(".route-truck");
+    var stations = map.querySelectorAll(".station");
+    var len = line.getTotalLength();
+    line.style.strokeDasharray = len;
+    line.style.strokeDashoffset = len;
+    var stops = [[390, 200], [610, 400], [390, 600], [610, 800], [390, 1000], [500, 1200]].map(function (pt) {
+      var best = 0, bd = Infinity;
+      for (var l = 0; l <= len; l += len / 600) {
+        var q = line.getPointAtLength(l);
+        var d = (q.x - pt[0]) * (q.x - pt[0]) + (q.y - pt[1]) * (q.y - pt[1]);
+        if (d < bd) { bd = d; best = l; }
+      }
+      return best / len;
+    });
+    ScrollTrigger.create({
+      trigger: map, start: "top 60%", end: "bottom 60%", scrub: 0.5,
+      onUpdate: function (self) {
+        var p = self.progress;
+        line.style.strokeDashoffset = len * (1 - p);
+        var q = line.getPointAtLength(len * p);
+        truck.style.transform = "translate(" + (q.x / 1000 * map.clientWidth) + "px," + (q.y / 1200 * map.clientHeight) + "px)";
+        stations.forEach(function (s, i) { s.classList.toggle("on", p >= stops[i] - 0.01); });
+      }
+    });
+  } else {
+    document.querySelectorAll(".station").forEach(function (s) { s.classList.add("on"); });
   }
 
   /* ---------- stacking cards ---------- */

@@ -51,7 +51,7 @@ DATA = {
     "process": ["p1", "p2", "p3", "p4", "p5", "p6"],
     "values": [
         {"k": "v1", "img": "plane-ground"},
-        {"k": "v2", "img": "port-yard"},
+        {"k": "v2", "img": "yard-night"},
         {"k": "v3", "img": "warehouse"},
     ],
     "cargo": ["c%d" % i for i in range(1, 11)],
@@ -68,12 +68,12 @@ DATA = {
         {"k": "j1", "img": "warehouse-aisle"},
         {"k": "j2", "img": "port-ship"},
         {"k": "j3", "img": "ship-sea"},
-        {"k": "j4", "img": "plane-sky"},
+        {"k": "j4", "img": "plane-ground"},
         {"k": "j5", "img": "docs"},
         {"k": "j6", "img": "truck-road"},
     ],
     "modes": [
-        {"k": "land", "img": "truck-mountain"},
+        {"k": "land", "img": "truck-road"},
         {"k": "sea", "img": "containers-aerial"},
         {"k": "air", "img": "plane-ground"},
         {"k": "post", "img": "parcels"},

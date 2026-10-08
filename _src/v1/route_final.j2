@@ -1,0 +1,31 @@
+{% from "icons.j2" import icon %}
+<!-- HOW WE WORK: a glowing route the truck drives along as you scroll -->
+<section class="route section" id="process">
+  <div class="section-head route-head">
+    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="process.kicker"></span></p>
+    <h2 class="h2" data-reveal-words data-i18n="process.title"></h2>
+  </div>
+  <div class="route-map">
+    <svg class="route-svg" viewBox="0 0 1000 1200" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="routeGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7cc4ff"/><stop offset="1" stop-color="#2a7fff"/>
+        </linearGradient>
+      </defs>
+      <path class="route-base" d="M500 0 C 500 120, 390 120, 390 200 S 610 320, 610 400 S 390 520, 390 600 S 610 720, 610 800 S 390 920, 390 1000 S 500 1080, 500 1200"/>
+      <path class="route-line" d="M500 0 C 500 120, 390 120, 390 200 S 610 320, 610 400 S 390 520, 390 600 S 610 720, 610 800 S 390 920, 390 1000 S 500 1080, 500 1200"/>
+    </svg>
+    <div class="route-truck" aria-hidden="true">{{ icon("truck") }}</div>
+    {% for p in process %}
+    <div class="station s{{ loop.index }}">
+      <span class="st-dot"></span>
+      <div class="st-card">
+        <span class="st-n">{{ "%02d"|format(loop.index) }}</span>
+        <h3 data-i18n="{{ p }}.t"></h3>
+        <p data-i18n="{{ p }}.d"></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="route-note" data-reveal>{{ icon("clock") }}<span data-i18n="process.note"></span></p>
+</section>

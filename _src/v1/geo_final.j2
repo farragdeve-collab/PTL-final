@@ -1,0 +1,24 @@
+{% from "icons.j2" import icon %}
+<!-- GLOBAL NETWORK: dotted globe with live routes from Cairo, one region per scroll step -->
+<section class="geo" id="network">
+  <div class="geo-stage">
+    <canvas class="globe-canvas" aria-hidden="true"></canvas>
+    <div class="geo-glow" aria-hidden="true"></div>
+    <div class="geo-regions">
+      <div class="geo-head">
+        <p class="kicker"><i class="dot"></i><span data-i18n="network.kicker"></span></p>
+        <h2 data-i18n="network.title"></h2>
+        <p class="geo-hub"><span class="pulse"></span><span data-i18n="network.hub"></span></p>
+      </div>
+      {% for r in regions %}
+      <article class="geo-panel" data-region="{{ r.k }}">
+        <span class="gp-n">{{ "%02d"|format(loop.index) }} / {{ "%02d"|format(regions|length) }}</span>
+        <h3 data-i18n="reg.{{ r.k }}.t"></h3>
+        <p data-i18n="reg.{{ r.k }}.c"></p>
+        {% if r.n %}<span class="gp-count"><b>{{ r.n }}</b> {{ icon("globe") }}</span>{% endif %}
+      </article>
+      {% endfor %}
+      <div class="geo-dots">{% for r in regions %}<i></i>{% endfor %}</div>
+    </div>
+  </div>
+</section>
