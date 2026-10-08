@@ -73,8 +73,8 @@ DATA = {
         {"k": "j6", "img": "truck-road"},
     ],
     "modes": [
-        {"k": "land", "img": "truck-road"},
-        {"k": "sea", "img": "yard-night"},
+        {"k": "land", "img": "truck-mountain"},
+        {"k": "sea", "img": "containers-aerial"},
         {"k": "air", "img": "plane-ground"},
         {"k": "post", "img": "parcels"},
     ],
