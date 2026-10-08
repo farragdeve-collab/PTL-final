@@ -14,7 +14,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Unbounded:wght@400;600;800&display=swap"></noscript>
 <script>(function(){var q=new URLSearchParams(location.search).get("lang"),s=null;try{s=localStorage.getItem("ptl-lang")}catch(e){}if((q||s)==="zh"&&(!q||q==="zh")){var k=document.createElement("link");k.rel="stylesheet";k.href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap";document.head.appendChild(k)}})();</script>  <link rel="stylesheet" href="style.css">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
-<link rel="preload" as="image" href="assets/sunset-ship.webp">
+<link rel="preload" as="image" href="assets/sunset-ship-rtl.webp">
 </head>
 <body class="page-index ">
 <script>try{if(sessionStorage.getItem("ptl-intro"))document.documentElement.classList.add("intro-seen")}catch(e){}</script>
@@ -61,7 +61,8 @@
   <main id="main">
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-media"><img src="assets/sunset-ship.webp" alt="" data-parallax="8"></div>
+  <div class="hero-media"><img src="assets/sunset-ship-rtl.webp" data-ltr="assets/sunset-ship.webp" alt="" data-parallax="8"></div>
+  <script>(function(){var q=new URLSearchParams(location.search).get("lang"),s=null;try{s=localStorage.getItem("ptl-lang")}catch(e){}var l=["ar","en","fr","zh"].indexOf(q)>=0?q:s;if(l&&l!=="ar"){var i=document.currentScript.previousElementSibling.querySelector("img");i.src=i.dataset.ltr;}})();</script>
   <div class="hero-shade"></div>
   <div class="hero-inner">
     <p class="kicker hero-kicker"><i class="dot"></i><span data-i18n="hero.kicker">شحن بحري وجوي · تخليص جمركي · نقل داخلي · استيراد وتصدير</span></p>
@@ -317,7 +318,7 @@
       </div>
     </article>
     <article class="stack-card" style="--n: 1">
-      <img src="assets/yard-night.webp" alt="" loading="lazy">
+      <img src="assets/port-yard.webp" alt="" loading="lazy">
       <div class="stack-body">
         <span class="stack-num chrome">02</span>
         <h3 data-i18n="v2.t">الأمانة والمصداقية</h3>

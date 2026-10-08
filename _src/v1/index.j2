@@ -4,7 +4,7 @@
 {% block fonts %}{% include "fonts.j2" %}{% endblock %}
 {% block head %}
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
-<link rel="preload" as="image" href="assets/sunset-ship.webp">
+<link rel="preload" as="image" href="assets/sunset-ship-rtl.webp">
 {% endblock %}
 
 {% block preloader %}
@@ -19,7 +19,9 @@
 {% block main %}
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-media"><img src="assets/sunset-ship.webp" alt="" data-parallax="8"></div>
+  {# Arabic gets a mirrored copy of the photo (ship clear of the right-aligned text) with the hull lettering kept readable #}
+  <div class="hero-media"><img src="assets/sunset-ship-rtl.webp" data-ltr="assets/sunset-ship.webp" alt="" data-parallax="8"></div>
+  <script>(function(){var q=new URLSearchParams(location.search).get("lang"),s=null;try{s=localStorage.getItem("ptl-lang")}catch(e){}var l=["ar","en","fr","zh"].indexOf(q)>=0?q:s;if(l&&l!=="ar"){var i=document.currentScript.previousElementSibling.querySelector("img");i.src=i.dataset.ltr;}})();</script>
   <div class="hero-shade"></div>
   <div class="hero-inner">
     <p class="kicker hero-kicker"><i class="dot"></i><span data-i18n="hero.kicker"></span></p>

@@ -150,9 +150,9 @@ html:not(.js) .preloader, .intro-seen .preloader { display: none; }
 /* ---------- hero ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
 .hero-media { position: absolute; inset: 0; }
-/* Arabic text sits on the right: mirror the photo so the ship stays clear of it (no lettering in the image) */
-[dir="rtl"] .hero-media { transform: scaleX(-1); }
-.hero-media img { width: 100%; height: 118%; object-fit: cover; object-position: 0% 55%; } /* ship sits right in LTR; mirrored to the left in RTL */
+.hero-media img { width: 100%; height: 118%; object-fit: cover; object-position: 0% 55%; }
+/* Arabic uses a pre-mirrored photo (sunset-ship-rtl) so the ship stays clear of the right-aligned text */
+[dir="rtl"] .hero-media img { object-position: 100% 55%; }
 .hero-shade { position: absolute; inset: 0; background:
   linear-gradient(180deg, rgba(5,8,13,.55) 0%, rgba(5,8,13,.15) 35%, rgba(5,8,13,.65) 70%, var(--bg) 100%),
   linear-gradient(90deg, rgba(5,8,13,.55), transparent 60%); }
