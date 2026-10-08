@@ -26,24 +26,7 @@
   </div>
 </section>
 
-<section class="values section">
-  <div class="section-head">
-    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="values.kicker"></span></p>
-    <h2 class="h2" data-reveal-words data-i18n="values.title"></h2>
-  </div>
-  <div class="stack">
-    {% for v in values %}
-    <article class="stack-card" style="--n: {{ loop.index0 }}">
-      <img src="assets/{{ v.img }}.webp" alt="" loading="lazy">
-      <div class="stack-body">
-        <span class="stack-num chrome">{{ "%02d"|format(loop.index) }}</span>
-        <h3 data-i18n="{{ v.k }}.t"></h3>
-        <p data-i18n="{{ v.k }}.d"></p>
-      </div>
-    </article>
-    {% endfor %}
-  </div>
-</section>
+{% include "values.j2" %}
 
 <section class="network section" id="network">
   <div class="network-head">

@@ -1,0 +1,37 @@
+{% from "icons.j2" import icon %}
+<!-- VALUES: stacked cards, or the image grid in the final version -->
+<section class="values section">
+  <div class="section-head">
+    <p class="kicker" data-reveal><i class="dot"></i><span data-i18n="values.kicker"></span></p>
+    <h2 class="h2" data-reveal-words data-i18n="values.title"></h2>
+  </div>
+  {% if version.final %}
+  {# final version: the same image grid as the services, sized for three cards #}
+  <div class="bento bento-3">
+    {% for v in values %}
+    <article class="bento-card b{{ loop.index }}" data-reveal data-delay="{{ loop.index0 * 0.08 }}">
+      <img src="assets/{{ v.img }}.webp" alt="" loading="lazy">
+      <span class="bento-n chrome">{{ "%02d"|format(loop.index) }}</span>
+      <div class="bento-body">
+        <span class="bento-icon">{{ icon(v.icon) }}</span>
+        <h3 data-i18n="{{ v.k }}.t"></h3>
+        <p data-i18n="{{ v.k }}.d"></p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="stack">
+    {% for v in values %}
+    <article class="stack-card" style="--n: {{ loop.index0 }}">
+      <img src="assets/{{ v.img }}.webp" alt="" loading="lazy">
+      <div class="stack-body">
+        <span class="stack-num chrome">{{ "%02d"|format(loop.index) }}</span>
+        <h3 data-i18n="{{ v.k }}.t"></h3>
+        <p data-i18n="{{ v.k }}.d"></p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

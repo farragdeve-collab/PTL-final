@@ -50,9 +50,9 @@ DATA = {
     ],
     "process": ["p1", "p2", "p3", "p4", "p5", "p6"],
     "values": [
-        {"k": "v1", "img": "plane-ground"},
-        {"k": "v2", "img": "port-yard"},
-        {"k": "v3", "img": "warehouse"},
+        {"k": "v1", "img": "plane-ground", "icon": "award"},
+        {"k": "v2", "img": "port-yard", "icon": "shield"},
+        {"k": "v3", "img": "warehouse", "icon": "box"},
     ],
     "cargo": ["c%d" % i for i in range(1, 11)],
     "regions": [

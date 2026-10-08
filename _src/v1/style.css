@@ -270,6 +270,8 @@ html:lang(ar) .kw-word { letter-spacing: 0; line-height: 1.35; }
 
 /* ---------- services grid (option B) ---------- */
 .services-grid .section-head, .bento { max-width: 87.5rem; margin-inline: auto; }
+.bento-3 .b3 { grid-column: span 2; } /* three-card grid: one large card, two wide cards beside it */
+.bento.bento-3 { grid-auto-rows: minmax(330px, 38vh); } /* the commitments carry longer text than the services */
 .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(250px, 31vh); gap: 16px; }
 .bento-card { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-2); background: var(--surface); isolation: isolate; }
 .b1 { grid-column: span 2; grid-row: span 2; }
@@ -474,7 +476,8 @@ html:lang(ar) .footer-col h3 { letter-spacing: 0; font-size: .9rem; }
   .region-arrow { display: none; }
   .review-grid { grid-template-columns: 1fr; }
   .bento { grid-template-columns: 1fr; grid-auto-rows: 290px; }
-  .b1, .b2, .b5, .b6 { grid-column: auto; }
+  .b1, .b2, .b5, .b6, .bento-3 .b3 { grid-column: auto; }
+  .bento.bento-3 { grid-auto-rows: minmax(340px, auto); }
   .mode-row { flex-direction: column; height: auto; }
   .mode, .mode.is-open { flex: none; height: 300px; }
   .mode p { opacity: 1; transform: none; }
